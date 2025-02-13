@@ -6,7 +6,7 @@ function twoSum(nums, target) {
             }
         }
     }
-    return []; // No solution found
+    return []; // Return empty array if no solution
 }
 
 console.log(twoSum([3, 5, 6, 1], 7)); // [0, 3]

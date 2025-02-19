@@ -1,0 +1,59 @@
+// ...existing code...
+
+Problem: Implement a RESTful API for a Library Management System
+
+Description:
+You are required to create a RESTful API for a Library Management System. The system should allow users to perform the following operations:
+1. Add a new book to the library.
+2. Update book details.
+3. Delete a book from the library.
+4. Retrieve details of a specific book by its ID.
+5. List all books in the library.
+
+Requirements:
+1. Use Node.js and Express.js for the backend.
+2. Use MongoDB as the database.
+3. Implement proper error handling and input validation.
+4. Write unit tests for the API endpoints.
+5. Ensure the API follows RESTful principles.
+
+Endpoints:
+1. POST /books - Add a new book.
+2. PUT /books/:id - Update book details.
+3. DELETE /books/:id - Delete a book.
+4. GET /books/:id - Retrieve details of a specific book.
+5. GET /books - List all books.
+
+Bonus:
+1. Implement pagination for the list of books.
+2. Add user authentication and authorization using JWT.
+
+// ...existing code...
+
+Problem: Implement a Least Recently Used (LRU) Cache
+
+Description:
+Design and implement a data structure for a Least Recently Used (LRU) cache. It should support the following operations:
+1. `get(key)`: Retrieve the value of the key if it exists in the cache, otherwise return -1.
+2. `put(key, value)`: Insert or update the value of the key. If the number of keys exceeds the capacity, evict the least recently used key.
+
+Requirements:
+1. The cache should be initialized with a positive capacity.
+2. Both operations (`get` and `put`) should be performed in O(1) time complexity.
+
+Example:
+```
+LRUCache cache = new LRUCache(2); // capacity 2
+cache.put(1, 1);
+cache.put(2, 2);
+cache.get(1);    // returns 1
+cache.put(3, 3); // evicts key 2
+cache.get(2);    // returns -1 (not found)
+cache.put(4, 4); // evicts key 1
+cache.get(1);    // returns -1 (not found)
+cache.get(3);    // returns 3
+cache.get(4);    // returns 4
+```
+
+Bonus:
+1. Implement the LRU Cache using a doubly linked list and a hash map.

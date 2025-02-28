@@ -111,12 +111,98 @@
 
 ///////////////////////////////////////////////
 
-type Fn = (accum: number, curr: number) => number
+// type Fn = (accum: number, curr: number) => number
 
-function reduce(nums: number[], fn: Fn, init: number): number {
-  let res = init;
-  for (let i = 0; i < nums.length; i++) {
-    res = fn(res, nums[i]);
-  }
-  return res;
+// function reduce(nums: number[], fn: Fn, init: number): number {
+//   let res = init;
+//   for (let i = 0; i < nums.length; i++) {
+//     res = fn(res, nums[i]);
+//   }
+//   return res;
+// };
+
+
+
+
+///////////////////////////////////////////////
+
+// type F = (x: number) => number;
+
+// function compose(functions: F[]): F {
+//   return function(x: number): number {
+//       return functions.reduce((acc, fn) => fn(acc), x);
+//   }
+// };
+// /**
+//  * const fn = compose([x => x + 1, x => 2 * x])
+//  * fn(4) // 9
+//  */
+
+//////////////////////////////////////////////
+// type JSONValue = null | boolean | number | string | JSONValue[] | { [key: string]: JSONValue };
+
+// function argumentsLength(...args: JSONValue[]): number {
+//   return args.length
+// };
+
+/**
+ * argumentsLength(1, 2, 3); // 3
+ */
+
+//////////////////////////////////////////////////
+
+// type Fn = (...params: number[]) => number
+
+// function memoize(fn: Fn): Fn {
+
+//     return function(...args) {
+
+//     }
+// }
+
+
+
+/** 
+ * let callCount = 0;
+ * const memoizedFn = memoize(function (a, b) {
+ *	 callCount += 1;
+ *   return a + b;
+ * })
+ * memoizedFn(2, 3) // 5
+ * memoizedFn(2, 3) // 5
+ * console.log(callCount) // 1 
+ */
+
+
+type P = Promise<number>
+
+async function addTwoPromises(promise1: P, promise2: P): P {
+  const [result1, result2] = await Promise.all([promise1, promise2]);
+  return result1 + result2;
 };
+
+/**
+ * addTwoPromises(Promise.resolve(2), Promise.resolve(2))
+ *   .then(console.log); // 4
+ */
+async function sleep(millis: number): Promise<void> {
+  await new Promise(resolve => setTimeout(resolve, millis));
+}
+
+
+/** 
+ * let t = Date.now()
+ * sleep(100).then(() => console.log(Date.now() - t)) // 100
+ */
+
+type Fn<T> = () => Promise<T>
+
+async function promiseAll<T>(functions: Fn<T>[]): Promise<T[]> {
+  const [...res] = await Promise.all([...functions])
+  return res 
+};
+
+/**
+ * const promise = promiseAll([() => new Promise(res => res(42))])
+ * promise.then(console.log); // [42]
+ */

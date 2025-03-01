@@ -195,14 +195,18 @@ async function sleep(millis: number): Promise<void> {
  * sleep(100).then(() => console.log(Date.now() - t)) // 100
  */
 
-type Fn<T> = () => Promise<T>
+// type Fn<T> = () => Promise<T>
 
-async function promiseAll<T>(functions: Fn<T>[]): Promise<T[]> {
-  const [...res] = await Promise.all([...functions])
-  return res 
-};
+// async function promiseAll<T>(functions: Fn<T>[]): Promise<T[]> {
+//   const [...res] = await Promise.all([...functions])
+//   // return res 
+// };
 
 /**
  * const promise = promiseAll([() => new Promise(res => res(42))])
  * promise.then(console.log); // [42]
  */
+
+
+
+
